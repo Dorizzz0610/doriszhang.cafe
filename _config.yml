@@ -23,7 +23,7 @@ author:
   # Biographic information
   avatar           : "profile.png"
   name             : "Liyu Zhang"
-  pronouns         : "she/her"  
+  pronouns         : #"she/her"  
   bio              : "BEng Computer Science student in HKUST"
   location         : "Hong Kong"
   employer         : "HKUST"
