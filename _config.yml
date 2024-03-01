@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Homepage of Doris"
+title                    : "Doris' Homepage"
 title_separator          : "-"
 name                     : &name "Liyu Zhang"
 description              : &description "personal description"
