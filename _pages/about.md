@@ -11,22 +11,22 @@ Hello! I'm an undergraduate third year student in [BEng Computer Science](https:
 
 I'm currently interested in Natural Language Processing and Large Language Model. 😊 
 
-
-
+<br>
+<br>
 
 Education
 ======
-**The Hong Kong University of Science and Technology (HKUST)**
-* Bachelor of Engineering in Computer Science and Mathematics, Sep. 2021 – Jun. 2025 (expected)
+**The Hong Kong University of Science and Technology ([HKUST](https://hkust.edu.hk/))**
+* Bachelor of Engineering in Computer Science, Sep. 2021 – Jun. 2025 (expected)
 
-**École polytechnique fédérale de Lausanne (EPFL)**
+**École polytechnique fédérale de Lausanne ([EPFL](https://www.epfl.ch/en/))**
 * Exchange student in School of Computer and Communication Sciences, Sep. 2023 - Feb. 2024
 
 **Shenzhen Senior High School**
 * International Baccalaureate Diploma Programme (IBDP), Sep. 2018 - May. 2021
 
-
-
+<br>
+<br>
 
 Awards
 ======
@@ -35,8 +35,8 @@ Awards
 * **University’s Scholarship Scheme for Continuing Undergraduate Students** (2022-2024) 
 * **University Admissions Scholarship Scheme for IB Diploma Holders** (2021)
 
-
-
+<br>
+<br>
 
 Teaching
 ======
