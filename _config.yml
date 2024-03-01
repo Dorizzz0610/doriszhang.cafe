@@ -12,7 +12,7 @@ title                    : "Doris' Homepage"
 title_separator          : "-"
 name                     : &name "Liyu Zhang"
 description              : &description "personal description"
-url                      : http://doriszhang.cafe # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://doriszhang.cafe # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "Dorizzz0610/doriszhang.cafe"
 
