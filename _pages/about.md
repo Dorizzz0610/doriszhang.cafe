@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Welcome to Doris Zhang's homepage☀️"
+title: "Welcome to Liyu Zhang's homepage☀️"
 author_profile: true
 redirect_from: 
   - /about/
@@ -10,7 +10,7 @@ redirect_from:
 <br>
 Hello! I'm an undergraduate third year student in [BEng Computer Science](https://cse.hkust.edu.hk/ug/comp/), with [extended major in Artificial Intelligence](https://emia.hkust.edu.hk/extended-major-artificial-intelligence-majorai) and [minor in Business](https://bmundergrad.hkust.edu.hk/academics/academic-programs/minor-programs), at [the Hong Kong University of Science and Technology](https://hkust.edu.hk/).
 
-I'm currently interested in Natural Language Processing and Large Language Model. 😊 
+I'm currently interested in Natural Language Processing and Large Language Model. 😊 Digging into NLP and LLMs to get why words really matter.
 
 <br>
 
