@@ -204,7 +204,7 @@ collections:
   publications:
     output: true
     permalink: /:collection/:path/
-  portfolio:
+  life:
     output: true
     permalink: /:collection/:path/
 
@@ -248,10 +248,10 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _portfolio
+  # _life
   - scope:
       path: ""
-      type: portfolio
+      type: life
     values:
       layout: single
       author_profile: true
