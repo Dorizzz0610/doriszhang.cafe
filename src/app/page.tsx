@@ -78,7 +78,7 @@ export default function Home() {
                   Hi! I&apos;m an undergraduate final year student in Computer Science, with minor in Business, at HKUST.
                 </p>
                 <p className="text-gray-800 dark:text-gray-200">
-                  As a group member of the MINSys Lab led by Professor Xiaomin Ouayng, I&apos;m currently interested in AI-enhanced IoT systems and their applications, with the sense of making AI more accessible to daily activities.
+                  As a group member of the MINSys Lab led by Professor Xiaomin Ouyang, I&apos;m currently interested in AI-enhanced IoT systems and their applications, with the sense of making AI more accessible to daily activities.
                 </p>
               </div>
             </div>
