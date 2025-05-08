@@ -102,7 +102,7 @@ const destinations: Destination[] = [
   },
   {
     name: "Banff, Canada",
-    description: "Stunning national park in the Canadian Rockies, featuring turquoise lakes, snow-capped mountains, and abundant wildlife. Perfect for hiking, skiing, and photography.",
+    description: "Stunning national park in the Canadian Rockies, featuring turquoise lakes like Lake Louise, snow-capped mountains, and abundant wildlife. Perfect for hiking, skiing, and photography adventures in all seasons.",
     image: "/images/destinations/banff.jpg",
     season: "Winter"
   },

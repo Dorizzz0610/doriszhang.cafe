@@ -50,9 +50,21 @@ const getImageUrl = (url: string) => {
   if (url && url.startsWith('http')) {
     return url;
   }
-  // 否则认为是本地路径，确保开头有/
-  if (!url) return getRandomFallbackImage();
-  return url.startsWith('/') ? url : `/${url}`;
+  
+  // 如果URL为空，使用备用图片
+  if (!url || url.trim() === '') {
+    return getRandomFallbackImage();
+  }
+  
+  // 检查本地图片路径是否存在 '/images/destinations/'
+  if (url.includes('destinations')) {
+    // 确保开头有/
+    return url.startsWith('/') ? url : `/${url}`;
+  }
+  
+  // 尝试构建完整的本地图片路径
+  const formattedPath = url.startsWith('/') ? url : `/images/destinations/${url}`;
+  return formattedPath;
 };
 
 export default function TripSuggestionWidget() {
@@ -92,6 +104,13 @@ export default function TripSuggestionWidget() {
         countryName = parts.slice(1).join(',').trim(); // 处理有多个逗号的情况
       }
       
+      // 准备经纬度坐标 - 使用真实数据或合理默认值
+      const lat = typeof data.lat === 'number' ? data.lat : (Math.random() * 80 - 40);
+      const lon = typeof data.lon === 'number' ? data.lon : (Math.random() * 360 - 180);
+      
+      // 确定适当的季节标签
+      let seasonTag = data.season || 'All seasons';
+      
       // 转换API数据到应用所需的格式
       const formattedDestination: Destination = {
         name: placeName,
@@ -99,11 +118,11 @@ export default function TripSuggestionWidget() {
         description: data.description || 'No description available',
         imageUrl: data.image || '',  // API返回的image字段
         coordinates: {
-          lat: Math.random() * 80 - 40, // 随机生成一个纬度值
-          lon: Math.random() * 360 - 180 // 随机生成一个经度值
+          lat: lat,
+          lon: lon
         },
-        tags: [data.season || 'All seasons', 'Travel', 'Explore'],
-        osmLink: `https://www.openstreetmap.org/#map=12/${Math.random() * 80 - 40}/${Math.random() * 360 - 180}`
+        tags: [seasonTag, 'Travel', 'Explore'],
+        osmLink: `https://www.openstreetmap.org/#map=12/${lat}/${lon}`
       };
       
       setDestination(formattedDestination);
@@ -139,6 +158,14 @@ export default function TripSuggestionWidget() {
   const handleImageError = () => {
     console.log('Image failed to load, using fallback image');
     setImageError(true);
+  };
+  
+  // 获取目的地图片URL
+  const getDestinationImageUrl = () => {
+    if (!destination || !destination.imageUrl || imageError) {
+      return getRandomFallbackImage();
+    }
+    return getImageUrl(destination.imageUrl);
   };
   
   if (loading) {
@@ -195,30 +222,16 @@ export default function TripSuggestionWidget() {
       </h3>
       <div className="flex flex-col items-center p-4 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/30 dark:to-purple-900/30 rounded-lg">
         <div className="relative h-48 w-full overflow-hidden rounded-lg mb-4">
-          {destination.imageUrl && !imageError ? (
-            <a href={destination.osmLink} target="_blank" rel="noopener noreferrer">
-              <Image 
-                src={imageError ? getRandomFallbackImage() : getImageUrl(destination.imageUrl)} 
-                alt={`${destination.name} image`} 
-                fill
-                className="object-cover"
-                onError={handleImageError}
-                unoptimized={true}
-              />
-            </a>
-          ) : (
-            <a href={destination.osmLink} target="_blank" rel="noopener noreferrer">
-              <div className="relative w-full h-full">
-                <Image 
-                  src={getRandomFallbackImage()}
-                  alt={`${destination.name} image (fallback)`}
-                  fill
-                  className="object-cover"
-                  unoptimized={true}
-                />
-              </div>
-            </a>
-          )}
+          <a href={destination.osmLink} target="_blank" rel="noopener noreferrer">
+            <Image 
+              src={getDestinationImageUrl()} 
+              alt={`${destination.name} image`} 
+              fill
+              className="object-cover"
+              onError={handleImageError}
+              unoptimized={true}
+            />
+          </a>
           <a 
             href={destination.osmLink} 
             target="_blank" 
