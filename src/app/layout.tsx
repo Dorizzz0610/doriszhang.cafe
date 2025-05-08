@@ -1,16 +1,13 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-});
+import './globals.css'
+import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: "Doris Zhang | Personal Website",
   description: "Welcome to Doris Liyu Zhang's personal website - Computer Science student at HKUST",
+  icons: {
+    icon: '/images/favicon.svg',
+    apple: '/images/favicon.svg',
+  },
 };
 
 export default function RootLayout({
@@ -20,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
+      <body className="antialiased">
         {children}
       </body>
     </html>

@@ -1,6 +1,6 @@
-# Doris Personal Website
+# Liyu Zhang's Personal Website
 
-A modern, responsive personal website built with Next.js, React, and TailwindCSS.
+A beautiful, responsive personal website built with Next.js, React, and TailwindCSS.
 
 ## Features
 
@@ -58,6 +58,24 @@ npm run deploy
 
 Make sure GitHub Pages is enabled in your repository settings and configured to deploy from the gh-pages branch.
 
+## Flight Tracking Feature
+
+The website includes a real-time flight tracking widget that displays global flight statistics. This feature uses the AviationStack API to fetch live flight data.
+
+### Setting up Flight Tracking API
+
+1. Sign up for a free API key at [AviationStack](https://aviationstack.com/signup/free)
+2. Create a `.env.local` file in the root directory (if it doesn't exist)
+3. Add your API key to the file:
+   ```
+   AVIATIONSTACK_API_KEY=your_api_key_here
+   ```
+4. Restart the development server if it's running
+
+The free tier of AviationStack has a limit of 500 requests per month, which should be sufficient for development and personal use.
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+<!-- 这是一个触发新构建的注释 - 确保GitHub Pages正确部署 -->

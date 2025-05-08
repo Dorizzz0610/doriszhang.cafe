@@ -3,6 +3,10 @@ import Link from "next/link";
 import BackgroundAnimation from "../components/BackgroundAnimation";
 import NavBar from "../components/NavBar";
 import AvatarCarousel from "../components/AvatarCarousel";
+import SpaceExplorationWidget from "../components/SpaceExplorationWidget";
+import WorldClockWidget from "../components/WorldClockWidget";
+import TripSuggestionWidget from "../components/TripSuggestionWidget";
+import CountdownWidget from "../components/CountdownWidget";
 
 export default function Home() {
   return (
@@ -10,10 +14,10 @@ export default function Home() {
       <BackgroundAnimation />
       <NavBar />
       
-      <div className="min-h-screen pt-20 pb-10">
+      <div className="min-h-screen pt-28 pb-10">
         <main className="container mx-auto px-4 sm:px-6">
           {/* 个人资料部分 */}
-          <section className="flex flex-col md:flex-row gap-10 items-center md:items-start mb-20 animate-fadeIn">
+          <section className="flex flex-col md:flex-row gap-16 items-center md:items-start mb-20 animate-fadeIn">
             <div className="w-full md:w-1/3 flex justify-center">
               <div className="relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full blur opacity-20 animate-pulse-scale"></div>
@@ -31,12 +35,12 @@ export default function Home() {
             </div>
             
             <div className="w-full md:w-2/3">
-              <h1 className="text-4xl font-bold mb-2 gradient-text">Liyu Zhang</h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 mb-5">
+              <h1 className="text-4xl font-bold mb-4 gradient-text">Liyu Zhang</h1>
+              <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
                 Final year Computer Science student in HKUST
               </p>
               
-              <div className="flex flex-wrap gap-3 mb-6">
+              <div className="flex flex-wrap gap-3 mb-8">
                 <span className="inline-flex items-center px-4 py-1.5 glass-effect rounded-full text-sm font-medium">
                   Hong Kong
                 </span>
@@ -45,7 +49,7 @@ export default function Home() {
                 </span>
               </div>
               
-              <div className="flex flex-wrap gap-4 mb-8">
+              <div className="flex flex-wrap gap-4 mb-10">
                 <a href="lzhangcx@connect.ust.hk" className="btn-outline flex items-center gap-2">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -69,6 +73,13 @@ export default function Home() {
                     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                   </svg>
                   LinkedIn
+                </a>
+                <a href="https://scholar.google.com/citations?hl=zh-CN&view_op=list_works&gmla=AIfU4H6_kUGs57vJgTFqzSjC6lnlw_7P2nIBcjA4NCDAHG4zeyRKZcR62dU5hpkAHwp2NGM28RwPpOmbdy50TQRXxDQ&user=WKPRBtgAAAAJ" target="_blank" rel="noopener noreferrer" className="btn-outline flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+                    <path d="M12 12c-1.385 0-2.695.288-3.885.806a8 8 0 0 0-2.542 2.063A6 6 0 0 1 12 12z"/>
+                  </svg>
+                  Google Scholar
                 </a>
               </div>
               
@@ -219,6 +230,22 @@ export default function Home() {
                   <p className="text-gray-600 dark:text-gray-300">COMP1021 Introduction to Computer Science (2022 Spring)</p>
                 </div>
               </div>
+            </div>
+          </section>
+          
+          {/* 小组件 */}
+          <section className="mb-20 animate-fadeIn" style={{ animationDelay: "1.4s" }}>
+            <h2 className="text-2xl font-bold mb-8 gradient-text inline-block">小组件</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* 太空探索 */}
+              <SpaceExplorationWidget />
+              
+              {/* 旅行建议 */}
+              <TripSuggestionWidget />
+              
+              {/* 事件倒计时 */}
+              <CountdownWidget />
             </div>
           </section>
         </main>
