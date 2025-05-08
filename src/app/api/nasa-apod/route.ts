@@ -1,5 +1,10 @@
 import { NextResponse } from 'next/server';
 
+// 添加静态配置，用于支持静态导出
+export const dynamic = 'force-static';
+// 设置重新验证时间 - 使静态导出的API每天更新一次
+export const revalidate = 86400; // 24小时
+
 // NASA APOD API
 // 使用演示密钥 DEMO_KEY，每小时限制30次请求，每天限制50次请求
 // 也可以在 https://api.nasa.gov/ 申请自己的API密钥

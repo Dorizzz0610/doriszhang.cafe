@@ -1,5 +1,10 @@
 import { NextResponse } from 'next/server';
 
+// 添加静态配置，用于支持静态导出
+export const dynamic = 'force-static';
+// 由于名言是随机的，每次构建时就生成一个不同结果即可
+export const revalidate = false;
+
 // 名言集合 - 预定义一个较大的列表，无需调用外部API
 const quotes = [
   {

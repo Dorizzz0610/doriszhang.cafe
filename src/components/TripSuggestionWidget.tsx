@@ -16,17 +16,17 @@ interface Destination {
   osmLink: string;
 }
 
-// Fallback destination data (when API fails)
+// 备用目的地
 const fallbackDestination: Destination = {
   name: 'Kyoto',
   country: 'Japan',
-  description: 'Kyoto is the cultural heart of Japan, with numerous ancient temples, shrines, and traditional gardens. Walk through historic streets, admire traditional architecture, taste authentic Japanese cuisine, and experience traditional tea ceremonies and geisha culture.',
-  imageUrl: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e',
+  description: 'Ancient temples, traditional gardens, and beautiful cherry blossoms in spring. Experience authentic Japanese culture with tea ceremonies and geisha performances.',
+  imageUrl: '/images/destinations/kyoto.jpg',
   coordinates: {
     lat: 35.0116,
     lon: 135.7680
   },
-  tags: ['Culture', 'Temples', 'History', 'Food'],
+  tags: ['Spring', 'Culture', 'Nature'],
   osmLink: 'https://www.openstreetmap.org/?mlat=35.0116&mlon=135.7680&zoom=12'
 };
 
@@ -42,6 +42,17 @@ const fallbackImages = [
 // 获取随机备用图片
 const getRandomFallbackImage = () => {
   return fallbackImages[Math.floor(Math.random() * fallbackImages.length)];
+};
+
+// 处理图片URL，确保在静态导出时能正确显示图片
+const getImageUrl = (url: string) => {
+  // 如果是完整URL，直接返回
+  if (url && url.startsWith('http')) {
+    return url;
+  }
+  // 否则认为是本地路径，确保开头有/
+  if (!url) return getRandomFallbackImage();
+  return url.startsWith('/') ? url : `/${url}`;
 };
 
 export default function TripSuggestionWidget() {
@@ -70,7 +81,32 @@ export default function TripSuggestionWidget() {
       setError(null);
       setImageError(false);
       const data = await fetchDestination();
-      setDestination(data);
+      
+      // 提取地点和国家信息
+      let placeName = data.name || 'Unknown destination';
+      let countryName = 'Unknown location';
+      
+      if (placeName.includes(',')) {
+        const parts = placeName.split(',');
+        placeName = parts[0].trim();
+        countryName = parts.slice(1).join(',').trim(); // 处理有多个逗号的情况
+      }
+      
+      // 转换API数据到应用所需的格式
+      const formattedDestination: Destination = {
+        name: placeName,
+        country: countryName,
+        description: data.description || 'No description available',
+        imageUrl: data.image || '',  // API返回的image字段
+        coordinates: {
+          lat: Math.random() * 80 - 40, // 随机生成一个纬度值
+          lon: Math.random() * 360 - 180 // 随机生成一个经度值
+        },
+        tags: [data.season || 'All seasons', 'Travel', 'Explore'],
+        osmLink: `https://www.openstreetmap.org/#map=12/${Math.random() * 80 - 40}/${Math.random() * 360 - 180}`
+      };
+      
+      setDestination(formattedDestination);
       setLoading(false);
     } catch (err) {
       console.error('Error in getNewDestination:', err);
@@ -158,56 +194,54 @@ export default function TripSuggestionWidget() {
         Trip Suggestion
       </h3>
       <div className="flex flex-col items-center p-4 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/30 dark:to-purple-900/30 rounded-lg">
-        <div className="w-full mb-4">
-          <div className="w-full h-40 mx-auto rounded-md shadow-lg overflow-hidden mb-3 relative">
-            {destination.imageUrl && !imageError ? (
-              <a href={destination.osmLink} target="_blank" rel="noopener noreferrer">
+        <div className="relative h-48 w-full overflow-hidden rounded-lg mb-4">
+          {destination.imageUrl && !imageError ? (
+            <a href={destination.osmLink} target="_blank" rel="noopener noreferrer">
+              <Image 
+                src={imageError ? getRandomFallbackImage() : getImageUrl(destination.imageUrl)} 
+                alt={`${destination.name} image`} 
+                fill
+                className="object-cover"
+                onError={handleImageError}
+                unoptimized={true}
+              />
+            </a>
+          ) : (
+            <a href={destination.osmLink} target="_blank" rel="noopener noreferrer">
+              <div className="relative w-full h-full">
                 <Image 
-                  src={imageError ? getRandomFallbackImage() : destination.imageUrl} 
-                  alt={`${destination.name} image`} 
+                  src={getRandomFallbackImage()}
+                  alt={`${destination.name} image (fallback)`}
                   fill
                   className="object-cover"
-                  onError={handleImageError}
                   unoptimized={true}
                 />
-              </a>
-            ) : (
-              <a href={destination.osmLink} target="_blank" rel="noopener noreferrer">
-                <div className="relative w-full h-full">
-                  <Image 
-                    src={getRandomFallbackImage()}
-                    alt={`${destination.name} image (fallback)`}
-                    fill
-                    className="object-cover"
-                    unoptimized={true}
-                  />
-                </div>
-              </a>
-            )}
-            <a 
-              href={destination.osmLink} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="absolute top-2 right-2 bg-white/80 dark:bg-black/60 px-2 py-1 rounded text-xs font-medium hover:bg-white dark:hover:bg-black transition-colors"
-            >
-              {destination.coordinates.lat.toFixed(2)}, {destination.coordinates.lon.toFixed(2)}
+              </div>
             </a>
+          )}
+          <a 
+            href={destination.osmLink} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="absolute top-2 right-2 bg-white/80 dark:bg-black/60 px-2 py-1 rounded text-xs font-medium hover:bg-white dark:hover:bg-black transition-colors"
+          >
+            {destination.coordinates.lat.toFixed(2)}, {destination.coordinates.lon.toFixed(2)}
+          </a>
+        </div>
+        <div>
+          <div className="font-bold text-lg flex items-center justify-between">
+            <span>{destination.name}</span>
+            <span className="text-sm text-gray-600 dark:text-gray-300">{destination.country}</span>
           </div>
-          <div>
-            <div className="font-bold text-lg flex items-center justify-between">
-              <span>{destination.name}</span>
-              <span className="text-sm text-gray-600 dark:text-gray-300">{destination.country}</span>
-            </div>
-            <p className="text-gray-600 dark:text-gray-300 text-sm my-2 line-clamp-3">
-              {destination.description}
-            </p>
-            <div className="flex flex-wrap gap-1 mt-2">
-              {destination.tags.map((tag, index) => (
-                <span key={index} className="bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-200 text-xs px-2 py-1 rounded">
-                  {tag}
-                </span>
-              ))}
-            </div>
+          <p className="text-gray-600 dark:text-gray-300 text-xs mt-2 line-clamp-4 leading-relaxed">
+            {destination.description}
+          </p>
+          <div className="flex flex-wrap gap-1 mt-2">
+            {destination.tags.map((tag, index) => (
+              <span key={index} className="bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-200 text-xs px-2 py-1 rounded">
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
         <div className="flex gap-2 w-full mt-2">
