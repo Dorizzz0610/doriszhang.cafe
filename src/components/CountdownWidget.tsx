@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 interface Event {
   name: string;
@@ -103,7 +103,7 @@ export default function CountdownWidget() {
   };
   
   // 计算剩余时间
-  const calculateTimeRemaining = () => {
+  const calculateTimeRemaining = useCallback(() => {
     const targetDate = new Date(events[selectedEventIndex].date);
     const currentDate = new Date();
     
@@ -117,7 +117,7 @@ export default function CountdownWidget() {
     const seconds = Math.floor((differenceInTime % (1000 * 60)) / 1000);
     
     setTimeRemaining({ days, hours, minutes, seconds });
-  };
+  }, [selectedEventIndex]);
   
   useEffect(() => {
     // 初始化
@@ -127,7 +127,7 @@ export default function CountdownWidget() {
     const interval = setInterval(calculateTimeRemaining, 1000);
     
     return () => clearInterval(interval);
-  }, [selectedEventIndex]);
+  }, [calculateTimeRemaining]);
   
   // 根据事件返回不同颜色的渐变
   const getGradientClass = () => {

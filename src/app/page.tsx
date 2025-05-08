@@ -4,7 +4,6 @@ import BackgroundAnimation from "../components/BackgroundAnimation";
 import NavBar from "../components/NavBar";
 import AvatarCarousel from "../components/AvatarCarousel";
 import SpaceExplorationWidget from "../components/SpaceExplorationWidget";
-import WorldClockWidget from "../components/WorldClockWidget";
 import TripSuggestionWidget from "../components/TripSuggestionWidget";
 import CountdownWidget from "../components/CountdownWidget";
 
@@ -37,7 +36,7 @@ export default function Home() {
             <div className="w-full md:w-2/3">
               <h1 className="text-4xl font-bold mb-4 gradient-text">Liyu Zhang</h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
-                Final year Computer Science student in HKUST
+                Final year Computer Science student at HKUST
               </p>
               
               <div className="flex flex-wrap gap-3 mb-8">
@@ -86,7 +85,7 @@ export default function Home() {
               <div className="modern-card p-6 animate-slideInRight">
                 <h2 className="text-2xl font-semibold mb-4">Welcome to Doris Zhang&apos;s homepage<span className="ml-2">☀️</span></h2>
                 <p className="mb-4 text-gray-800 dark:text-gray-200">
-                  Hi! I&apos;m an undergraduate final year student in Computer Science, with minor in Business, at HKUST.
+                  Hi! I&apos;m an final year undergraduate student in Computer Science, with minor in Business, at HKUST.
                 </p>
                 <p className="text-gray-800 dark:text-gray-200">
                   As a group member of the MINSys Lab led by Professor Xiaomin Ouyang, I&apos;m currently interested in AI-enhanced IoT systems and their applications, with the sense of making AI more accessible to daily activities.
@@ -233,7 +232,7 @@ export default function Home() {
             </div>
           </section>
           
-          {/* 小组件 */}
+          {/* Fun Widgets */}
           <section className="mb-20 animate-fadeIn" style={{ animationDelay: "1.4s" }}>
             <h2 className="text-2xl font-bold mb-8 gradient-text inline-block">小组件</h2>
             
