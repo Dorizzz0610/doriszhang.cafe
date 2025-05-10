@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Kyoto, Japan",
+    "description": "Ancient temples, traditional gardens, and beautiful cherry blossoms in spring. Experience authentic Japanese culture with tea ceremonies and geisha performances.",
+    "image": "/images/destinations/kyoto.jpg",
+    "season": "Spring"
+  },
+  {
+    "name": "Bali, Indonesia",
+    "description": "Tropical paradise with lush rice terraces, ancient temples, and pristine beaches. Enjoy surfing, spiritual retreats, and vibrant local culture.",
+    "image": "/images/destinations/bali.jpg",
+    "season": "Summer"
+  },
+  {
+    "name": "Santorini, Greece",
+    "description": "Stunning white-washed buildings with blue domes overlooking the Aegean Sea. Perfect for romantic getaways, incredible sunsets, and Mediterranean cuisine.",
+    "image": "/images/destinations/santorini.jpg",
+    "season": "Summer"
+  },
+  {
+    "name": "Swiss Alps, Switzerland",
+    "description": "Majestic mountain landscapes offering world-class skiing in winter and hiking in summer. Experience charming alpine villages and breathtaking panoramic views.",
+    "image": "/images/destinations/swissalps.jpg",
+    "season": "Winter"
+  },
+  {
+    "name": "New York City, USA",
+    "description": "The city that never sleeps offers iconic skyscrapers, world-class museums, Broadway shows, and diverse neighborhoods to explore. A perfect urban adventure.",
+    "image": "/images/destinations/newyork.jpg",
+    "season": "Fall"
+  }
+] 
