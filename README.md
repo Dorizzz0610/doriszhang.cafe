@@ -1,4 +1,4 @@
-# Liyu Zhang's Personal Website
+# Doris Personal Website
 
 A beautiful, responsive personal website built with Next.js, React, and TailwindCSS.
 
