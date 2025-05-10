@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import destinations from '@/data/destinations';
 
 // 添加静态配置，用于支持静态导出
-export const dynamic = 'force-static';
+export const dynamic = 'error';
 export const revalidate = false;
 
 export async function GET() {
@@ -19,7 +19,11 @@ export async function GET() {
       lon: getDestinationLongitude(destination.name)
     };
     
-    return NextResponse.json(enhancedDestination);
+    return NextResponse.json(enhancedDestination, {
+      headers: {
+        'Cache-Control': 'no-store, max-age=0',
+      }
+    });
   } catch (error) {
     console.error('Error in trip suggestion API:', error);
     return NextResponse.json(

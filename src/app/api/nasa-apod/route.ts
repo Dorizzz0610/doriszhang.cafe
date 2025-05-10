@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 
 // 添加静态配置，用于支持静态导出
-export const dynamic = 'force-static';
-// 设置重新验证时间 - 使静态导出的API每天更新一次
-export const revalidate = 86400; // 24小时
+export const dynamic = 'error';
+// 设置重新验证时间
+export const revalidate = false;
 
 // NASA APOD API
 // 使用演示密钥 DEMO_KEY，每小时限制30次请求，每天限制50次请求
@@ -13,7 +13,7 @@ const NASA_API_URL = 'https://api.nasa.gov/planetary/apod';
 
 export async function GET() {
   try {
-    const response = await fetch(`${NASA_API_URL}?api_key=${NASA_API_KEY}`);
+    const response = await fetch(`${NASA_API_URL}?api_key=${NASA_API_KEY}`, { cache: 'no-store' });
     
     if (!response.ok) {
       throw new Error(`NASA API responded with status: ${response.status}`);

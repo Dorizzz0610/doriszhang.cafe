@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import destinations from '@/data/destinations';
 
 interface Destination {
   name: string;
@@ -74,25 +75,16 @@ export default function TripSuggestionWidget() {
   const [retryCount, setRetryCount] = useState(0);
   const [imageError, setImageError] = useState(false);
   
-  const fetchDestination = async () => {
-    try {
-      const response = await fetch('/api/trip-suggestion');
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return await response.json();
-    } catch (error) {
-      console.error('Failed to fetch trip suggestion:', error);
-      throw new Error('Unable to fetch trip suggestion');
-    }
-  };
-  
-  const getNewDestination = async () => {
+  // 直接从destinations数据中获取随机目的地，而不是通过API
+  const getNewDestination = () => {
     try {
       setLoading(true);
       setError(null);
       setImageError(false);
-      const data = await fetchDestination();
+      
+      // 随机选择一个目的地
+      const randomIndex = Math.floor(Math.random() * destinations.length);
+      const data = destinations[randomIndex];
       
       // 提取地点和国家信息
       let placeName = data.name || 'Unknown destination';
@@ -105,68 +97,63 @@ export default function TripSuggestionWidget() {
       }
       
       // 准备经纬度坐标 - 使用真实数据或合理默认值
-      const lat = typeof data.lat === 'number' ? data.lat : (Math.random() * 80 - 40);
-      const lon = typeof data.lon === 'number' ? data.lon : (Math.random() * 360 - 180);
+      const lat = Math.random() * 80 - 40; // 随机纬度
+      const lon = Math.random() * 360 - 180; // 随机经度
       
       // 确定适当的季节标签
       let seasonTag = data.season || 'All seasons';
+
+      // 处理图片路径
+      let imageUrl = data.image;
+      if (!imageUrl || !imageUrl.startsWith('/')) {
+        imageUrl = `/images/destinations/${placeName.toLowerCase().replace(/\s+/g, '')}.jpg`;
+      }
       
-      // 转换API数据到应用所需的格式
-      const formattedDestination: Destination = {
+      // 创建 OpenStreetMap 链接
+      const osmLink = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}&zoom=12`;
+      
+      // 设置格式化的目的地数据
+      setDestination({
         name: placeName,
         country: countryName,
-        description: data.description || 'No description available',
-        imageUrl: data.image || '',  // API返回的image字段
-        coordinates: {
-          lat: lat,
-          lon: lon
-        },
-        tags: [seasonTag, 'Travel', 'Explore'],
-        osmLink: `https://www.openstreetmap.org/#map=12/${lat}/${lon}`
-      };
-      
-      setDestination(formattedDestination);
-      setLoading(false);
+        description: data.description || 'A beautiful destination waiting to be explored.',
+        imageUrl: imageUrl,
+        coordinates: { lat, lon },
+        tags: [seasonTag, 'Travel', 'Adventure'],
+        osmLink
+      });
     } catch (err) {
-      console.error('Error in getNewDestination:', err);
-      // After 3 failed attempts, use fallback data
+      console.error('Error processing destination data:', err);
+      setError((err as Error).message);
+      
+      // 如果多次重试后仍然失败，使用备用目的地
       if (retryCount >= 2) {
-        console.log('Using fallback destination after multiple retries');
         setDestination(fallbackDestination);
-        setError(null);
-      } else {
-        setError((err as Error).message);
-        setRetryCount(prev => prev + 1);
       }
+    } finally {
       setLoading(false);
     }
+  };
+  
+  // 处理图片加载错误
+  const handleImageError = () => {
+    setImageError(true);
+  };
+  
+  // 获取图片URL，如果原始图片加载失败则使用备用图片
+  const getDestinationImageUrl = () => {
+    if (!destination) return '';
+    
+    if (imageError) {
+      return getRandomFallbackImage();
+    }
+    
+    return destination.imageUrl;
   };
   
   useEffect(() => {
     getNewDestination();
   }, []);
-  
-  // Use fallback data when error occurs
-  useEffect(() => {
-    if (error && !destination) {
-      console.log('Setting fallback destination due to error');
-      setDestination(fallbackDestination);
-    }
-  }, [error, destination]);
-  
-  // 处理图片加载错误
-  const handleImageError = () => {
-    console.log('Image failed to load, using fallback image');
-    setImageError(true);
-  };
-  
-  // 获取目的地图片URL
-  const getDestinationImageUrl = () => {
-    if (!destination || !destination.imageUrl || imageError) {
-      return getRandomFallbackImage();
-    }
-    return getImageUrl(destination.imageUrl);
-  };
   
   if (loading) {
     return (
@@ -193,17 +180,15 @@ export default function TripSuggestionWidget() {
           </svg>
           Trip Suggestion
         </h3>
-        <div className="flex flex-col items-center p-4 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/30 dark:to-purple-900/30 rounded-lg">
-          <p className="text-red-500">Error: {error}</p>
-          <p className="text-sm text-gray-500 mt-2">Please try again later</p>
+        <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
+          <p className="text-red-600 dark:text-red-400 text-sm">
+            Error loading trip suggestion. Please try again later.
+          </p>
           <button 
             onClick={getNewDestination}
-            className="mt-4 bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded-full text-sm font-medium flex items-center transition-colors duration-300"
+            className="mt-2 bg-indigo-500 hover:bg-indigo-600 text-white py-1 px-3 rounded text-sm"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
-            </svg>
-            Retry
+            Try Again
           </button>
         </div>
       </div>
@@ -279,11 +264,6 @@ export default function TripSuggestionWidget() {
             New Destination
           </button>
         </div>
-        {(error || imageError) && (
-          <p className="text-amber-500 text-xs mt-2 text-center">
-            Note: Using fallback {imageError ? 'image' : 'data'} {error ? `(API issue: ${error})` : ''}
-          </p>
-        )}
       </div>
     </div>
   );

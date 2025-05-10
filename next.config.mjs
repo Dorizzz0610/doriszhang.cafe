@@ -19,6 +19,8 @@ const nextConfig = {
     // !! 仅开发时应该忽略
     ignoreBuildErrors: true,
   },
+  // 确保静态导出时能够处理动态API路由
+  trailingSlash: true,
 };
 
 export default nextConfig; 

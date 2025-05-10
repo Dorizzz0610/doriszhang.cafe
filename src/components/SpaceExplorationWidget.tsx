@@ -25,13 +25,26 @@ export default function SpaceExplorationWidget() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [retryCount, setRetryCount] = useState(0);
+  const [imageError, setImageError] = useState(false);
   
   const getSpaceData = async () => {
     try {
       setLoading(true);
       setError(null);
+      setImageError(false);
       
-      const response = await fetch('/api/nasa-apod');
+      // 在静态网站中，我们不能使用动态API，所以我们使用预先生成的数据
+      // 添加时间戳参数，防止缓存
+      const timestamp = new Date().getTime();
+      const response = await fetch(`/data/nasa-apod.json?t=${timestamp}`, {
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
+        }
+      });
+      
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -52,6 +65,28 @@ export default function SpaceExplorationWidget() {
       }
       setLoading(false);
     }
+  };
+  
+  // 处理图片URL，确保在静态导出时能正确显示图片
+  const getImageUrl = (url: string) => {
+    // 如果是本地图片路径
+    if (url && url.startsWith('/')) {
+      return url;
+    }
+    
+    // 如果是完整URL但不是https，转换为https
+    if (url && url.startsWith('http:')) {
+      return url.replace('http:', 'https:');
+    }
+    
+    // 如果已经是https或其他格式，直接返回
+    return url;
+  };
+  
+  // 处理图片加载错误
+  const handleImageError = () => {
+    console.error('Image failed to load:', spaceData?.url);
+    setImageError(true);
   };
   
   useEffect(() => {
@@ -106,13 +141,26 @@ export default function SpaceExplorationWidget() {
       </h3>
       <div className="flex flex-col space-y-4">
         <div className="relative h-48 w-full overflow-hidden rounded-lg">
-          <Image 
-            src={spaceData.url}
-            alt={spaceData.title}
-            fill
-            className="object-cover"
-            unoptimized={true}
-          />
+          {!imageError ? (
+            <Image 
+              src={getImageUrl(spaceData.url)}
+              alt={spaceData.title}
+              fill
+              className="object-cover"
+              unoptimized={true}
+              onError={handleImageError}
+              priority={true}
+            />
+          ) : (
+            <Image 
+              src={fallbackSpaceData.url}
+              alt="Fallback space image"
+              fill
+              className="object-cover"
+              unoptimized={true}
+              priority={true}
+            />
+          )}
         </div>
         
         <div>
@@ -125,9 +173,9 @@ export default function SpaceExplorationWidget() {
           )}
         </div>
         
-        {error && (
+        {(error || imageError) && (
           <p className="text-amber-500 text-xs mt-4 text-center">
-            Note: Using fallback data (API connection issue)
+            Note: {imageError ? 'Using fallback image' : 'Using fallback data'} (API connection issue)
           </p>
         )}
         

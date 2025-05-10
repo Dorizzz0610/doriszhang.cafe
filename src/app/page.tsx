@@ -226,7 +226,7 @@ export default function Home() {
                 </div>
                 <div>
                   <p className="font-medium">Undergraduate Teaching Assistant</p>
-                  <p className="text-gray-600 dark:text-gray-300">COMP1021 Introduction to Computer Science (2022 Spring)</p>
+                  <p className="text-gray-600 dark:text-gray-300">COMP1021 Introduction to Computer Science (2023 Spring)</p>
                 </div>
               </div>
             </div>

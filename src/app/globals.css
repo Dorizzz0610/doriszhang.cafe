@@ -249,6 +249,33 @@ img {
   display: inline-block;
 }
 
+/* 日落渐变文字 */
+.gradient-text-orange {
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* 日出渐变文字 */
+.gradient-text-yellow {
+  background: linear-gradient(to right, #f6d365, #fda085);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* 夜晚渐变文字 */
+.gradient-text-blue {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
 /* 分隔线样式 */
 .modern-divider {
   height: 1px;
