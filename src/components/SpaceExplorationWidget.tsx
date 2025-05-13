@@ -203,7 +203,7 @@ export default function SpaceExplorationWidget() {
         )}
         
         <div className="text-xs text-gray-500 mt-4 text-center">
-          数据来源: NASA - 每日天文图片
+          Data source: NASA - Astronomy Picture of the Day
         </div>
       </div>
     </div>

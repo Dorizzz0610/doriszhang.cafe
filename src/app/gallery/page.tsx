@@ -34,32 +34,167 @@ export default function Gallery() {
           <section>
             <h2 className="text-2xl font-bold mb-10 gradient-text inline-block">Gallery</h2>
             
-            {/* 第一张图片 */}
+            {/* 顶部区域 - 竖向照片放在一起 */}
             <div className="mb-16">
-              <div className="max-w-xl mx-auto md:mx-0 card-modern group">
-                <div className="relative overflow-hidden">
-                  <Image
-                    src="/images/gallery1.png"
-                    alt="Gallery Image 1"
-                    width={600}
-                    height={400}
-                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                {/* 画廊图片21 - Dec 2023 竖向照片 */}
+                                <div className="card-modern group">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/images/gallery21.png"
+                      alt="Gallery Image 21"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
+                    <h3 className="font-medium mb-2 text-lg">Star-Like Lights Soaring into Blue Sky</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
+                      Zurich, Switzerland. Dec 2023.
+                    </p>
+                  </div>
                 </div>
-                <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
-                  <h3 className="font-medium mb-2 text-lg">Canals, Bikes & Cheerful Passersby at Night</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
-                    Amsterdam, Netherlands. Jan 2024.
-                  </p>
+                {/* 竖向照片 */}
+                <div className="card-modern group">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/images/gallery1.png"
+                      alt="Gallery Image 1"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
+                    <h3 className="font-medium mb-2 text-lg">Canals, Bikes & Cheerful Passersby at Night</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
+                      Amsterdam, Netherlands. Jan 2024.
+                    </p>
+                  </div>
+                </div>
+                
+
+              </div>
+            </div>
+            
+            {/* 横向照片布局 - 按时间排序：Dec < Christmas < New Year's Eve < Jan */}
+            <div className="mb-16">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                {/* 画廊图片17 - Dec 2023 */}
+                <div className="card-modern group">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/images/gallery17.png"
+                      alt="Gallery Image 17"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
+                    <h3 className="font-medium mb-2 text-lg">Pigeons, People & Flurry on Charles Bridge</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
+                      Prague, Czech. Dec 2023.
+                    </p>
+                  </div>
+                </div>
+                
+                {/* 画廊图片19 - Dec 2023 */}
+                <div className="card-modern group">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/images/gallery19.png"
+                      alt="Gallery Image 19"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
+                    <h3 className="font-medium mb-2 text-lg">Sagrada Família Glimpsed Through a Casa Milà Bookmark</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
+                      Barcelona, Spain. Dec 2023.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
+            
+            {/* 圣诞节照片 */}
+            <div className="mb-16">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                {/* 画廊图片18 - Christmas 2023 */}
+                <div className="card-modern group">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/images/gallery18.png"
+                      alt="Gallery Image 18"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
+                    <h3 className="font-medium mb-2 text-lg">Santa Taking Off & Sunset Glow on Christmas Eve in Montreux</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
+                      Montreux, Switzerland. Chrismas🎄 2023.
+                    </p>
+                  </div>
+                </div>
+                
+                {/* 画廊图片5 - Christmas 2023 */}
+                <div className="card-modern group">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/images/gallery5.png"
+                      alt="Gallery Image 5"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
+                    <h3 className="font-medium mb-2 text-lg">On the way to Montreux Christmas market</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
+                      Montreux, Switzerland. Chrismas🎄 2023.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* 新年前夕照片 */}
+            <div className="mb-16">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                {/* 画廊图片20 - New Year's Eve 2024 */}
+                <div className="card-modern group">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/images/gallery20.png"
+                      alt="Gallery Image 20"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
+                    <h3 className="font-medium mb-2 text-lg">Crowds & Dreamy Fireworks at the Arc de Triomphe</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
+                      Paris, France. New Year's Eve 🎆 2024.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
             
             {/* 🌅 Sunrise Collection */}
             <section className="mb-16">
               <h3 className="text-xl font-bold mb-6 gradient-text-yellow inline-block">🌅 Sunrise Collection</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                {/* 按时间顺序排列 */}
                 {/* 画廊图片14 - Dec 2023 */}
                 <div className="card-modern group">
                   <div className="relative overflow-hidden">
@@ -145,7 +280,26 @@ export default function Gallery() {
                   </div>
                 </div>
                 
-                {/* 画廊图片4 - Nov 2023 */}
+                {/* 画廊图片22 - Nov 2023 */}
+                <div className="card-modern group">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/images/gallery22.png"
+                      alt="Gallery Image 22"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
+                    <h3 className="font-medium mb-2 text-lg">The Little Mermaid</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
+                      Copenhagen, Denmark. Nov 2023.
+                    </p>
+                  </div>
+                </div>
+                
+                {/* 画廊图片4 - Dec 2023 */}
                 <div className="card-modern group">
                   <div className="relative overflow-hidden">
                     <Image
@@ -159,26 +313,7 @@ export default function Gallery() {
                   <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
                     <h3 className="font-medium mb-2 text-lg">Tibidabo</h3>
                     <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
-                      Barcelona, Spain. Nov 2023.
-                    </p>
-                  </div>
-                </div>
-                
-                {/* 画廊图片5 - Dec 2023 */}
-                <div className="card-modern group">
-                  <div className="relative overflow-hidden">
-                    <Image
-                      src="/images/gallery5.png"
-                      alt="Gallery Image 5"
-                      width={600}
-                      height={400}
-                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
-                    <h3 className="font-medium mb-2 text-lg">On the way to Montreux Christmas market</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
-                      Montreux, Switzerland. Chrismas🎄 2023.
+                      Barcelona, Spain. Dec 2023.
                     </p>
                   </div>
                 </div>
@@ -221,7 +356,7 @@ export default function Gallery() {
                   </div>
                 </div>
                 
-                {/* 画廊图片7 - Jan 2024 */}
+                {/* 画廊图片7 - Jan 2024 - 从一月照片区域移过来的 */}
                 <div className="card-modern group">
                   <div className="relative overflow-hidden">
                     <Image
@@ -258,6 +393,25 @@ export default function Gallery() {
                     </p>
                   </div>
                 </div>
+                
+                {/* 画廊图片15 - Jun 2024 */}
+                <div className="card-modern group">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/images/gallery15.png"
+                      alt="Gallery Image 15"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
+                    <h3 className="font-medium mb-2 text-lg">Kata Beach</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
+                      Phuket, Thailand. Jun 2024.
+                    </p>
+                  </div>
+                </div>
               </div>
             </section>
             
@@ -266,6 +420,7 @@ export default function Gallery() {
               <h3 className="text-xl font-bold mb-6 gradient-text-blue inline-block">🌃 Night Collection</h3>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                {/* 按时间顺序排列 */}
                 {/* 画廊图片9 - Sep 2023 */}
                 <div className="card-modern group">
                   <div className="relative overflow-hidden">
@@ -285,7 +440,7 @@ export default function Gallery() {
                   </div>
                 </div>
                 
-                {/* 画廊图片12 - Dec 2024 */}
+                {/* 画廊图片12 - Dec 2023 */}
                 <div className="card-modern group">
                   <div className="relative overflow-hidden">
                     <Image
@@ -304,7 +459,7 @@ export default function Gallery() {
                   </div>
                 </div>
                 
-                {/* 画廊图片13 - Dec 2024 */}
+                {/* 画廊图片13 - Dec 2023 */}
                 <div className="card-modern group">
                   <div className="relative overflow-hidden">
                     <Image
@@ -319,6 +474,25 @@ export default function Gallery() {
                     <h3 className="font-medium mb-2 text-lg">Top of Astronomical Clock</h3>
                     <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
                       Prague, Czech. Dec 2023.
+                    </p>
+                  </div>
+                </div>
+                
+                {/* 画廊图片16 - Jan 2024 - 从一月照片区域移过来的 */}
+                <div className="card-modern group">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/images/gallery16.png"
+                      alt="Gallery Image 16"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
+                    <h3 className="font-medium mb-2 text-lg">Damrak Canal</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
+                      Amsterdam, Netherlands. Jan 2024.
                     </p>
                   </div>
                 </div>
