@@ -34,9 +34,12 @@ export default function SpaceExplorationWidget() {
       setImageError(false);
       
       // 在静态网站中，我们不能使用动态API，所以我们使用预先生成的数据
-      // 添加时间戳参数，防止缓存
+      // 添加随机参数和当前日期，强制浏览器不使用缓存
       const timestamp = new Date().getTime();
-      const response = await fetch(`/data/nasa-apod.json?t=${timestamp}`, {
+      const randomParam = Math.random().toString(36).substring(2, 15);
+      const today = new Date().toISOString().split('T')[0];
+      
+      const response = await fetch(`/data/nasa-apod.json?date=${today}&t=${timestamp}&r=${randomParam}`, {
         cache: 'no-store',
         headers: {
           'Cache-Control': 'no-cache, no-store, must-revalidate',
@@ -52,6 +55,9 @@ export default function SpaceExplorationWidget() {
       const data = await response.json();
       setSpaceData(data);
       setLoading(false);
+      
+      // 在控制台记录获取时间，方便调试
+      console.log(`NASA APOD data fetched at: ${new Date().toLocaleString()}`);
     } catch (err) {
       console.error('Error fetching space data:', err);
       // 如果API调用失败3次后，使用备用数据
@@ -90,11 +96,28 @@ export default function SpaceExplorationWidget() {
   };
   
   useEffect(() => {
+    // 立即获取数据
     getSpaceData();
     
     // 每天更新一次太空数据
-    const intervalId = setInterval(getSpaceData, 86400000);
-    return () => clearInterval(intervalId);
+    // 也添加一个较短的间隔（每小时）检查是否有新数据
+    const dailyInterval = setInterval(getSpaceData, 86400000); // 24小时
+    const hourlyCheckInterval = setInterval(getSpaceData, 3600000); // 1小时
+    
+    // 当用户重新访问页面时尝试获取新数据
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        getSpaceData();
+      }
+    };
+    
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    return () => {
+      clearInterval(dailyInterval);
+      clearInterval(hourlyCheckInterval);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
   }, []);
   
   // 当错误发生时，使用备用数据
@@ -175,12 +198,12 @@ export default function SpaceExplorationWidget() {
         
         {(error || imageError) && (
           <p className="text-amber-500 text-xs mt-4 text-center">
-            Note: {imageError ? 'Using fallback image' : 'Using fallback data'} (API connection issue)
+            注意: {imageError ? '使用备用图片' : '使用备用数据'} (API连接问题)
           </p>
         )}
         
         <div className="text-xs text-gray-500 mt-4 text-center">
-          Data source: NASA - Astronomy Picture of the Day
+          数据来源: NASA - 每日天文图片
         </div>
       </div>
     </div>

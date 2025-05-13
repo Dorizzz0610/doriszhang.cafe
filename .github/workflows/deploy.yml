@@ -4,6 +4,9 @@ on:
   push:
     branches: [ master ]
   workflow_dispatch:
+  schedule:
+    # 每天UTC时间0:00运行（对应北京时间8:00）
+    - cron: '0 0 * * *'
 
 jobs:
   build-and-deploy:
@@ -20,6 +23,11 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci
+      
+      - name: Update NASA APOD Data
+        run: node scripts/generate-nasa-data.js
+        env:
+          NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
 
       - name: Build
         run: npm run build
