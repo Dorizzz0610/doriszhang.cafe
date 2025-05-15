@@ -3,6 +3,39 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import destinations from '@/data/destinations';
+import { usePathname } from 'next/navigation';
+
+// 多语言文本
+const translations = {
+  en: {
+    tripSuggestion: 'Trip Suggestion',
+    loading: 'Loading...',
+    errorLoading: 'Error loading trip suggestion. Please try again later.',
+    tryAgain: 'Try Again',
+    exploreOnMap: 'Explore on map',
+    generateNewDestination: 'Generate new destination',
+    unknownDestination: 'Unknown destination',
+    unknownLocation: 'Unknown location',
+    beautifulDestination: 'A beautiful destination waiting to be explored.',
+    allSeasons: 'All seasons',
+    travel: 'Travel',
+    adventure: 'Adventure'
+  },
+  zh: {
+    tripSuggestion: '旅行建议',
+    loading: '加载中...',
+    errorLoading: '加载旅行建议时出错。请稍后再试。',
+    tryAgain: '重试',
+    exploreOnMap: '在地图上探索',
+    generateNewDestination: '生成新目的地',
+    unknownDestination: '未知目的地',
+    unknownLocation: '未知位置',
+    beautifulDestination: '一个等待探索的美丽目的地。',
+    allSeasons: '四季皆宜',
+    travel: '旅行',
+    adventure: '冒险'
+  }
+};
 
 interface Destination {
   name: string;
@@ -75,6 +108,11 @@ export default function TripSuggestionWidget() {
   const [retryCount, setRetryCount] = useState(0);
   const [imageError, setImageError] = useState(false);
   
+  // 检测当前语言
+  const pathname = usePathname();
+  const locale = pathname?.includes('/zh') ? 'zh' : 'en';
+  const t = translations[locale];
+  
   // 直接从destinations数据中获取随机目的地，而不是通过API
   const getNewDestination = () => {
     try {
@@ -87,8 +125,8 @@ export default function TripSuggestionWidget() {
       const data = destinations[randomIndex];
       
       // 提取地点和国家信息
-      let placeName = data.name || 'Unknown destination';
-      let countryName = 'Unknown location';
+      let placeName = data.name || t.unknownDestination;
+      let countryName = t.unknownLocation;
       
       if (placeName.includes(',')) {
         const parts = placeName.split(',');
@@ -101,7 +139,7 @@ export default function TripSuggestionWidget() {
       const lon = Math.random() * 360 - 180; // 随机经度
       
       // 确定适当的季节标签
-      let seasonTag = data.season || 'All seasons';
+      let seasonTag = data.season || t.allSeasons;
 
       // 处理图片路径
       let imageUrl = data.image;
@@ -116,10 +154,10 @@ export default function TripSuggestionWidget() {
       setDestination({
         name: placeName,
         country: countryName,
-        description: data.description || 'A beautiful destination waiting to be explored.',
+        description: data.description || t.beautifulDestination,
         imageUrl: imageUrl,
         coordinates: { lat, lon },
-        tags: [seasonTag, 'Travel', 'Adventure'],
+        tags: [seasonTag, t.travel, t.adventure],
         osmLink
       });
     } catch (err) {
@@ -162,7 +200,7 @@ export default function TripSuggestionWidget() {
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-indigo-500" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
           </svg>
-          Trip Suggestion
+          {t.tripSuggestion}
         </h3>
         <div className="flex justify-center items-center h-60">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
@@ -178,17 +216,17 @@ export default function TripSuggestionWidget() {
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-indigo-500" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
           </svg>
-          Trip Suggestion
+          {t.tripSuggestion}
         </h3>
         <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg">
           <p className="text-red-600 dark:text-red-400 text-sm">
-            Error loading trip suggestion. Please try again later.
+            {t.errorLoading}
           </p>
           <button 
             onClick={getNewDestination}
             className="mt-2 bg-indigo-500 hover:bg-indigo-600 text-white py-1 px-3 rounded text-sm"
           >
-            Try Again
+            {t.tryAgain}
           </button>
         </div>
       </div>
@@ -203,7 +241,7 @@ export default function TripSuggestionWidget() {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-indigo-500" viewBox="0 0 20 20" fill="currentColor">
           <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
         </svg>
-        Trip Suggestion
+        {t.tripSuggestion}
       </h3>
       <div className="flex flex-col items-center p-4 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/30 dark:to-purple-900/30 rounded-lg">
         <div className="relative h-48 w-full overflow-hidden rounded-lg mb-4">
@@ -252,7 +290,7 @@ export default function TripSuggestionWidget() {
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
             </svg>
-            View Map
+            {t.exploreOnMap}
           </a>
           <button 
             onClick={getNewDestination}
@@ -261,7 +299,7 @@ export default function TripSuggestionWidget() {
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />
             </svg>
-            New Destination
+            {t.generateNewDestination}
           </button>
         </div>
       </div>

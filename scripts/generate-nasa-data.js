@@ -28,7 +28,12 @@ const fallbackData = {
 // 从NASA API获取数据
 function fetchNASAData() {
   return new Promise((resolve, reject) => {
-    https.get(NASA_API_URL, (res) => {
+    const req = https.get(NASA_API_URL, {
+      timeout: 10000, // 10秒超时
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; PersonalWebsite/1.0;)'
+      }
+    }, (res) => {
       let data = '';
 
       res.on('data', (chunk) => {
@@ -49,40 +54,61 @@ function fetchNASAData() {
           reject(new Error(`HTTP error! Status: ${res.statusCode}`));
         }
       });
-    }).on('error', (err) => {
+    });
+
+    req.on('error', (err) => {
       console.error('Error fetching NASA data:', err);
       reject(err);
+    });
+
+    req.on('timeout', () => {
+      req.destroy();
+      reject(new Error('Request timeout'));
     });
   });
 }
 
 // 主函数
 async function generateNASAData() {
-  try {
-    console.log('Fetching NASA APOD data...');
-    const data = await fetchNASAData();
-    
-    // 过滤数据，只保留需要的字段
-    const filteredData = {
-      url: data.url,
-      title: data.title,
-      explanation: data.explanation,
-      date: data.date,
-      copyright: data.copyright
-    };
-    
-    // 写入文件
-    fs.writeFileSync(TARGET_FILE, JSON.stringify(filteredData, null, 2));
-    console.log(`NASA APOD data saved to ${TARGET_FILE}`);
-    console.log(`Today's image: ${filteredData.title}`);
-    
-  } catch (error) {
-    console.error('Failed to fetch NASA data, using fallback data:', error);
-    
-    // 使用备用数据
-    fs.writeFileSync(TARGET_FILE, JSON.stringify(fallbackData, null, 2));
-    console.log(`Fallback NASA APOD data saved to ${TARGET_FILE}`);
+  let retries = 3;
+  let error;
+
+  while (retries > 0) {
+    try {
+      console.log(`Fetching NASA APOD data (attempts remaining: ${retries})...`);
+      const data = await fetchNASAData();
+      
+      // 过滤数据，只保留需要的字段
+      const filteredData = {
+        url: data.url,
+        title: data.title,
+        explanation: data.explanation,
+        date: data.date,
+        copyright: data.copyright
+      };
+      
+      // 写入文件
+      fs.writeFileSync(TARGET_FILE, JSON.stringify(filteredData, null, 2));
+      console.log(`NASA APOD data saved to ${TARGET_FILE}`);
+      console.log(`Today's image: ${filteredData.title}`);
+      return; // 成功后退出
+      
+    } catch (err) {
+      error = err;
+      retries--;
+      if (retries > 0) {
+        console.log(`Retrying... (${retries} attempts left)`);
+        // 短暂等待后重试
+        await new Promise(resolve => setTimeout(resolve, 2000));
+      }
+    }
   }
+
+  console.error('Failed to fetch NASA data after multiple attempts, using fallback data:', error);
+  
+  // 使用备用数据
+  fs.writeFileSync(TARGET_FILE, JSON.stringify(fallbackData, null, 2));
+  console.log(`Fallback NASA APOD data saved to ${TARGET_FILE}`);
 }
 
 // 执行主函数

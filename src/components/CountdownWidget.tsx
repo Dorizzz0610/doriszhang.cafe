@@ -1,12 +1,60 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
+import { usePathname } from 'next/navigation';
+
+// 多语言支持
+interface Translations {
+  eventCountdown: string;
+  days: string;
+  hours: string;
+  mins: string;
+  secs: string;
+  saveTheDate: string;
+  chineseNewYear: string;
+  christmas: string;
+  olympics: string;
+  halloween: string;
+  global: string;
+  [key: string]: string; // 添加索引签名
+}
+
+const translations: {[locale: string]: Translations} = {
+  en: {
+    eventCountdown: 'Event Countdown',
+    days: 'DAYS',
+    hours: 'HOURS',
+    mins: 'MINS',
+    secs: 'SECS',
+    saveTheDate: 'Save the Date',
+    chineseNewYear: 'Chinese New Year',
+    christmas: 'Christmas',
+    olympics: 'Los Angeles Olympic Games',
+    halloween: 'Halloween',
+    global: 'Global'
+  },
+  zh: {
+    eventCountdown: '活动倒计时',
+    days: '天',
+    hours: '时',
+    mins: '分',
+    secs: '秒',
+    saveTheDate: '记住日期',
+    chineseNewYear: '春节',
+    christmas: '圣诞节',
+    olympics: '洛杉矶奥运会',
+    halloween: '万圣节',
+    global: '全球'
+  }
+};
 
 interface Event {
   name: string;
+  nameKey: string;
   date: string;
   icon: string;
   location: string;
+  locationKey: string;
   color: string;
 }
 
@@ -55,30 +103,38 @@ const getNextChristmas = (): string => {
 const events: Event[] = [
   {
     name: 'Chinese New Year',
+    nameKey: 'chineseNewYear',
     date: getNextChineseNewYear(),
     icon: '🧧',
     location: 'Global',
+    locationKey: 'global',
     color: 'from-red-50 to-yellow-50 dark:from-red-900/30 dark:to-yellow-900/30'
   },
   {
     name: 'Christmas',
+    nameKey: 'christmas',
     date: getNextChristmas(),
     icon: '🎄',
     location: 'Global',
+    locationKey: 'global',
     color: 'from-red-50 to-green-50 dark:from-red-900/30 dark:to-green-900/30'
   },
   {
     name: 'Los Angeles Olympic Games',
+    nameKey: 'olympics',
     date: '2028-07-21',
     icon: '🏅',
     location: 'Los Angeles, USA',
+    locationKey: '',
     color: 'from-blue-50 to-indigo-50 dark:from-blue-900/30 dark:to-indigo-900/30'
   },
   {
     name: 'Halloween',
+    nameKey: 'halloween',
     date: new Date().getMonth() >= 9 && new Date().getDate() > 31 ? `${new Date().getFullYear() + 1}-10-31` : `${new Date().getFullYear()}-10-31`,
     icon: '🎃',
     location: 'Global',
+    locationKey: 'global',
     color: 'from-orange-50 to-purple-50 dark:from-orange-900/30 dark:to-purple-900/30'
   }
 ];
@@ -91,6 +147,11 @@ export default function CountdownWidget() {
     minutes: 0,
     seconds: 0
   });
+  
+  // 检测当前语言
+  const pathname = usePathname();
+  const locale = pathname?.includes('/zh') ? 'zh' : 'en';
+  const t = translations[locale];
   
   // 下一个事件
   const nextEvent = () => {
@@ -140,35 +201,35 @@ export default function CountdownWidget() {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-purple-500" viewBox="0 0 20 20" fill="currentColor">
           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
         </svg>
-        Event Countdown
+        {t.eventCountdown}
       </h3>
       <div className={`flex flex-col items-center p-6 bg-gradient-to-br ${getGradientClass()} rounded-lg`}>
         <div className="text-5xl mb-4">
           {events[selectedEventIndex].icon}
         </div>
         <h4 className="text-xl font-bold text-center mb-1">
-          {events[selectedEventIndex].name}
+          {events[selectedEventIndex].nameKey && t[events[selectedEventIndex].nameKey] || events[selectedEventIndex].name}
         </h4>
         <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-          {events[selectedEventIndex].location}
+          {events[selectedEventIndex].locationKey && t[events[selectedEventIndex].locationKey] || events[selectedEventIndex].location}
         </p>
         
         <div className="grid grid-cols-4 gap-2 w-full mb-6">
           <div className="flex flex-col items-center bg-white/60 dark:bg-gray-800/60 py-2 px-1 rounded-lg">
             <span className="text-2xl font-bold">{timeRemaining.days}</span>
-            <span className="text-xs text-gray-500">DAYS</span>
+            <span className="text-xs text-gray-500">{t.days}</span>
           </div>
           <div className="flex flex-col items-center bg-white/60 dark:bg-gray-800/60 py-2 px-1 rounded-lg">
             <span className="text-2xl font-bold">{timeRemaining.hours}</span>
-            <span className="text-xs text-gray-500">HOURS</span>
+            <span className="text-xs text-gray-500">{t.hours}</span>
           </div>
           <div className="flex flex-col items-center bg-white/60 dark:bg-gray-800/60 py-2 px-1 rounded-lg">
             <span className="text-2xl font-bold">{timeRemaining.minutes}</span>
-            <span className="text-xs text-gray-500">MINS</span>
+            <span className="text-xs text-gray-500">{t.mins}</span>
           </div>
           <div className="flex flex-col items-center bg-white/60 dark:bg-gray-800/60 py-2 px-1 rounded-lg">
             <span className="text-2xl font-bold">{timeRemaining.seconds}</span>
-            <span className="text-xs text-gray-500">SECS</span>
+            <span className="text-xs text-gray-500">{t.secs}</span>
           </div>
         </div>
         
@@ -182,7 +243,7 @@ export default function CountdownWidget() {
             </svg>
           </button>
           <div className="text-sm text-center">
-            <div className="font-medium">Save the Date</div>
+            <div className="font-medium">{t.saveTheDate}</div>
             <div className="text-gray-500">{events[selectedEventIndex].date}</div>
           </div>
           <button 

@@ -1,11 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import BackgroundAnimation from "../components/BackgroundAnimation";
-import NavBar from "../components/NavBar";
-import AvatarCarousel from "../components/AvatarCarousel";
-import SpaceExplorationWidget from "../components/SpaceExplorationWidget";
-import TripSuggestionWidget from "../components/TripSuggestionWidget";
-import CountdownWidget from "../components/CountdownWidget";
+import BackgroundAnimation from "../../components/BackgroundAnimation";
+import NavBar from "../../components/NavBar";
+import AvatarCarousel from "../../components/AvatarCarousel";
+import SpaceExplorationWidget from "../../components/SpaceExplorationWidget";
+import TripSuggestionWidget from "../../components/TripSuggestionWidget";
+import CountdownWidget from "../../components/CountdownWidget";
+
+export function generateStaticParams() {
+  return [
+    { locale: 'en' },
+    { locale: 'zh' },
+  ];
+}
 
 export default function Home() {
   return (

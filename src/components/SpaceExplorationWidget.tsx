@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 interface SpaceImage {
   url: string;
@@ -10,6 +11,28 @@ interface SpaceImage {
   date: string;
   copyright?: string;
 }
+
+// 多语言文本
+const translations = {
+  en: {
+    spaceExploration: 'Space Exploration',
+    loading: 'Loading...',
+    fallbackTitle: 'The Wonders of the Universe',
+    fallbackExplanation: 'The universe is filled with countless amazing celestial bodies, including stars, galaxies, and nebulae. Every day, we discover new beautiful scenes in the cosmos.',
+    dataSource: 'Data source: NASA - Astronomy Picture of the Day',
+    note: 'Note: Using fallback',
+    apiConnectionProblem: '(API connection issue)'
+  },
+  zh: {
+    spaceExploration: '太空探索',
+    loading: '加载中...',
+    fallbackTitle: '宇宙的奇迹',
+    fallbackExplanation: '宇宙中充满了无数令人惊叹的天体，包括恒星、星系和星云。每天，我们都能在宇宙中发现新的美丽景象。',
+    dataSource: '数据来源: NASA - 每日天文图片',
+    note: '注意: 使用备用图片',
+    apiConnectionProblem: '(API连接问题)'
+  }
+};
 
 // 备用的太空图片数据
 const fallbackSpaceData: SpaceImage = {
@@ -26,6 +49,11 @@ export default function SpaceExplorationWidget() {
   const [error, setError] = useState<string | null>(null);
   const [retryCount, setRetryCount] = useState(0);
   const [imageError, setImageError] = useState(false);
+  
+  // 检测当前语言
+  const pathname = usePathname();
+  const locale = pathname?.includes('/zh') ? 'zh' : 'en';
+  const t = translations[locale];
   
   const getSpaceData = async () => {
     try {
@@ -142,7 +170,7 @@ export default function SpaceExplorationWidget() {
             <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
             <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
           </svg>
-          Space Exploration
+          {t.spaceExploration}
         </h3>
         <div className="flex justify-center items-center h-60">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
@@ -160,7 +188,7 @@ export default function SpaceExplorationWidget() {
           <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
           <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
         </svg>
-        Space Exploration
+        {t.spaceExploration}
       </h3>
       <div className="flex flex-col space-y-4">
         <div className="relative h-48 w-full overflow-hidden rounded-lg">
@@ -198,12 +226,12 @@ export default function SpaceExplorationWidget() {
         
         {(error || imageError) && (
           <p className="text-amber-500 text-xs mt-4 text-center">
-            注意: {imageError ? '使用备用图片' : '使用备用数据'} (API连接问题)
+            {t.note} {t.apiConnectionProblem}
           </p>
         )}
         
         <div className="text-xs text-gray-500 mt-4 text-center">
-          Data source: NASA - Astronomy Picture of the Day
+          {t.dataSource}
         </div>
       </div>
     </div>
