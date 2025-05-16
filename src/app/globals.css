@@ -378,3 +378,97 @@ img {
     0 1px 2px rgba(0, 0, 0, 0.4),
     0 6px 16px rgba(0, 0, 0, 0.3);
 }
+
+/* Markdown Content Styles */
+.prose {
+  @apply text-gray-900 dark:text-gray-100;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply text-gray-900 dark:text-gray-100 font-bold;
+}
+
+.prose h1 {
+  @apply text-4xl mt-8 mb-4;
+}
+
+.prose h2 {
+  @apply text-3xl mt-8 mb-4;
+}
+
+.prose h3 {
+  @apply text-2xl mt-6 mb-3;
+}
+
+.prose p {
+  @apply mb-4 leading-relaxed;
+}
+
+.prose ul {
+  @apply list-disc list-inside mb-4;
+}
+
+.prose ol {
+  @apply list-decimal list-inside mb-4;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-gray-300 dark:border-gray-700 pl-4 italic my-4;
+}
+
+.prose a {
+  @apply text-blue-600 dark:text-blue-400 hover:underline;
+}
+
+.prose code {
+  @apply bg-gray-100 dark:bg-gray-800 rounded px-1;
+}
+
+.prose pre {
+  @apply bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto mb-4;
+}
+
+/* Floating Bubble Animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating-bubble {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  opacity: 0.1;
+  transition: opacity 0.3s, transform 0.3s;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: float 6s ease-in-out infinite;
+  text-decoration: none;
+  color: #333;
+}
+
+.floating-bubble:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+/* Dark mode styles */
+.dark .floating-bubble {
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+}

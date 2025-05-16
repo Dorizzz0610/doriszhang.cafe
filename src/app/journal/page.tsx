@@ -42,15 +42,22 @@ export default function Journal() {
               <div className="flex items-center justify-center flex-col py-16">
                 <h2 className="text-2xl md:text-3xl font-semibold mb-6">Stay Tuned</h2>
                 <p className="text-lg text-gray-700 dark:text-gray-300 mb-10 max-w-xl text-center">
-                 I’m currently negotiating with my thoughts. Once they agree, I’ll share my ideas and reflections here.
+                 I'm currently negotiating with my thoughts. Once they agree, I'll share my ideas and reflections here.
                 </p>
                 
-                <div className="relative">
+                <div className="flex flex-col items-center gap-6">
                   <Link 
                     href="/"
                     className="btn-modern-minimal"
                   >
                     Return Home
+                  </Link>
+                  
+                  <Link 
+                    href="/journal/self-coherence"
+                    className="text-sm text-indigo-500 dark:text-indigo-400 hover:underline mt-6"
+                  >
+                    Talk about some self-coherence stuffs first(Chinese only :o)
                   </Link>
                 </div>
               </div>
