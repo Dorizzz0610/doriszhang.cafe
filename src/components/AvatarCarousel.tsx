@@ -17,20 +17,22 @@ const AvatarCarousel = () => {
     { image: '/images/avatar2.png', message: 'Collecting travel plans (and a few too many souvenirs).' },
     { image: '/images/avatar3.png', message: 'Negotiating peace treaties between my cat and parrots.' },
     { image: '/images/avatar4.png', message: 'On a mission to rate every bubble tea (those with tea+milk).' },
-    { image: '/images/avatar5.png', message: 'Juggling at least three windows on the screen.' },
-    { image: '/images/avatar6.png', message: 'Serving cocktails that are "happy accidents".' },
-    { image: '/images/avatar7.png', message: 'Focusing on cardio as weightlifting remains a distant rumor.' },
+    { image: '/images/avatar5.png', message: 'Serving cocktails that are "happy accidents".' },
+    { image: '/images/avatar6.png', message: 'Using drones because walking the whole park is overrated.' },
+    { image: '/images/avatar7.png', message: 'Juggling at least three windows on the screen.' },
     { image: '/images/avatar8.png', message: 'Terrible at gaming, but can be a master of virtual sightseeing.' },
     { image: '/images/avatar9.png', message: 'Browsing bookstores for the smell, not the stories.' },
-    { image: '/images/avatar10.png', message: 'Sometimes I love popcorn more than the movie itself.' },
+    { image: '/images/avatar10.png', message: 'Focusing on cardio as weightlifting remains a distant rumor.' },
     { image: '/images/avatar11.png', message: 'Cycling only on streets with zero people.' },
-    { image: '/images/avatar12.png', message: 'Dancing mostly to the rhythm of my laptop\'s playlist.' },
+    { image: '/images/avatar12.png', message: 'Sometimes I love popcorn more than the movie itself.' },
     { image: '/images/avatar13.png', message: 'Professional at trying on clothes, part-time at buying them.' },
     { image: '/images/avatar14.png', message: 'I take my best photos on other people\'s cameras.' },
     { image: '/images/avatar15.png', message: 'Sunglasses fan with even bringing extras for friends.' },
-    { image: '/images/avatar16.png', message: 'An overqualified long-distance commuter.' },
+    { image: '/images/avatar16.png', message: 'Dancing mostly to the rhythm of my laptop\'s playlist.' },
     { image: '/images/avatar17.png', message: 'Learning how to take a nap on grass.' },
     { image: '/images/avatar18.png', message: 'Chatting with GPT to self-reflect (and confirm I\'m not a robot).' },
+    { image: '/images/avatar19.png', message: 'An overqualified long-distance commuter.' },
+
   ];
 
   // Handle scroll to update visible items
