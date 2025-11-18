@@ -92,7 +92,7 @@ export default function Home() {
               <div className="modern-card p-6 animate-slideInRight">
                 <h2 className="text-2xl font-semibold mb-4">Welcome to Doris Zhang&apos;s homepage<span className="ml-2">☀️</span></h2>
                 <p className="mb-4 text-gray-800 dark:text-gray-200">
-                  Hi! I&apos;m an final year undergraduate student in Computer Science, with minor in Business, at HKUST.
+                  Hi! I&apos;m a first year PhD student at HKUST CSE, <span className="line-through">final year undergraduate student in Computer Science, with minor in Business, at HKUST</span> <Link href="/graduation" className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline transition-colors">(I have graduated🥳)</Link>.
                 </p>
                 <p className="text-gray-800 dark:text-gray-200">
                   As a group member of the MINSys Lab led by Professor Xiaomin Ouyang, I&apos;m currently interested in AI-enhanced IoT systems and their applications, with the sense of making AI more accessible to daily activities.

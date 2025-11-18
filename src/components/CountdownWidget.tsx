@@ -86,17 +86,34 @@ const getNextChineseNewYear = (): string => {
 const getNextChristmas = (): string => {
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
-  
+
   // 今年的圣诞节
   const thisYearChristmas = new Date(`${currentYear}-12-25`);
-  
+
   // 如果今年的圣诞节已经过了，则返回明年的
   if (currentDate > thisYearChristmas) {
     return `${currentYear + 1}-12-25`;
   }
-  
+
   // 否则返回今年的
   return `${currentYear}-12-25`;
+};
+
+// 计算下一个万圣节的日期
+const getNextHalloween = (): string => {
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+
+  // 今年的万圣节
+  const thisYearHalloween = new Date(`${currentYear}-10-31`);
+
+  // 如果今年的万圣节已经过了，则返回明年的
+  if (currentDate > thisYearHalloween) {
+    return `${currentYear + 1}-10-31`;
+  }
+
+  // 否则返回今年的
+  return `${currentYear}-10-31`;
 };
 
 // 重要事件列表
@@ -131,7 +148,7 @@ const events: Event[] = [
   {
     name: 'Halloween',
     nameKey: 'halloween',
-    date: new Date().getMonth() >= 9 && new Date().getDate() > 31 ? `${new Date().getFullYear() + 1}-10-31` : `${new Date().getFullYear()}-10-31`,
+    date: getNextHalloween(),
     icon: '🎃',
     location: 'Global',
     locationKey: 'global',
