@@ -43,7 +43,7 @@ export default function Home() {
             <div className="w-full md:w-2/3">
               <h1 className="text-4xl font-bold mb-4 gradient-text">Liyu Zhang</h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
-                Final year Computer Science student at HKUST
+                First year PhD student at HKUST CSE
               </p>
               
               <div className="flex flex-wrap gap-3 mb-8">
