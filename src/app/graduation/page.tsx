@@ -64,7 +64,7 @@ export default function Graduation() {
       type: "image",
       src: "/images/graduation/Flower plus flower.jpg",
       alt: "Flowers Collection",
-      caption: "花与花的组合💐",
+      caption: "花上加花💐",
       className: "md:col-span-1 aspect-[3/4]",
     },
     {
@@ -80,7 +80,7 @@ export default function Graduation() {
       type: "image",
       src: "/images/graduation/Stairs.jpg",
       alt: "Stairs to Future",
-      caption: "向上走，别回头🤏",
+      caption: "一条从UG Hall通向PG Hall的楼梯",
       className: "md:col-span-1 aspect-[3/4]",
     },
     {
@@ -102,14 +102,14 @@ export default function Graduation() {
       src: "/images/graduation/cpu-gift.jpg",
       alt: "CSE CPU Gift",
       caption: "拿着真CPU走掉，学校别想再CPU我🥔",
-      className: "md:col-span-2 aspect-[8/5]",
+      className: "md:col-span-2 h-80 sm:h-96 md:h-[360px]",
     },
     {
       type: "image",
       src: "/images/graduation/escape-mushroom.jpg",
       alt: "Need Vertical Photo",
       caption: "大步逃离蘑菇🍄",
-      className: "md:col-span-1 aspect-[3/4]",
+      className: "md:col-span-1 h-80 sm:h-96 md:h-[360px]",
     },
     {
       type: "image",
