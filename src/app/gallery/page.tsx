@@ -208,6 +208,25 @@ export default function Gallery() {
                     </p>
                   </div>
                 </div>
+                
+                {/* 画廊图片26 - Jan 2026 */}
+                <div className="card-modern group">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/images/gallery26.png"
+                      alt="Gallery Image 26"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
+                    <h3 className="font-medium mb-2 text-lg">Odaiba Seaside Park</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
+                      Tokyo, Japan. Jan 1st 🎍 2026.
+                    </p>
+                  </div>
+                </div>
               </div>
             </section>
             
@@ -407,6 +426,63 @@ export default function Gallery() {
                     </p>
                   </div>
                 </div>
+                
+                {/* 画廊图片23 - Christmas 2025 */}
+                <div className="card-modern group">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/images/gallery23.png"
+                      alt="Gallery Image 23"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
+                    <h3 className="font-medium mb-2 text-lg">Fushimi Inari Shrine</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
+                      Kyoto, Japan. Chrismas🎄 2025.
+                    </p>
+                  </div>
+                </div>
+                
+                {/* 画廊图片25 - Dec 2025 */}
+                <div className="card-modern group">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/images/gallery25.png"
+                      alt="Gallery Image 25"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
+                    <h3 className="font-medium mb-2 text-lg">Outside Tokyo Big Sight (Comiket 107)</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
+                      Tokyo, Japan. Dec 2025. 
+                    </p>
+                  </div>
+                </div>
+                
+                {/* 画廊图片27 - Jan 2026 */}
+                <div className="card-modern group">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/images/gallery27.png"
+                      alt="Gallery Image 27"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
+                    <h3 className="font-medium mb-2 text-lg">Shenzhen Bay Park</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
+                      Shenzhen, China. Jan 2026.
+                    </p>
+                  </div>
+                </div>
               </div>
             </section>
             
@@ -488,6 +564,25 @@ export default function Gallery() {
                     <h3 className="font-medium mb-2 text-lg">Damrak Canal</h3>
                     <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
                       Amsterdam, Netherlands. Jan 2024.
+                    </p>
+                  </div>
+                </div>
+                
+                {/* 画廊图片24 - Dec 2025 */}
+                <div className="card-modern group">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/images/gallery24.png"
+                      alt="Gallery Image 24"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
+                    <h3 className="font-medium mb-2 text-lg">Top of Tokyo Skytree</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
+                      Tokyo, Japan. Dec 2025.
                     </p>
                   </div>
                 </div>
