@@ -110,7 +110,12 @@ export default function Home() {
                     HKUST CSE
                   </a>{' '}
                   <span className="line-through">final year Undergraduate student at HKUST CSE with minor in Business</span>{' '}
-                  <Link href="/graduation" className="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 underline transition-colors">(I have graduated!🥳)</Link>
+                  <Link
+                    href="/graduation"
+                    className="ml-1 inline-flex items-center rounded-full bg-amber-100/70 dark:bg-amber-900/30 px-2 py-0.5 text-sm font-medium text-amber-800 dark:text-amber-200 hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-colors"
+                  >
+                    (I have graduated!🥳)
+                  </Link>
                 </p>
                 <p className="text-gray-800 dark:text-gray-200">
                   As a group member of the{' '}
