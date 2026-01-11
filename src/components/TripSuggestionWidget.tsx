@@ -142,10 +142,9 @@ export default function TripSuggestionWidget() {
       let seasonTag = data.season || t.allSeasons;
 
       // 处理图片路径
-      let imageUrl = data.image;
-      if (!imageUrl || !imageUrl.startsWith('/')) {
-        imageUrl = `/images/destinations/${placeName.toLowerCase().replace(/\s+/g, '')}.jpg`;
-      }
+      const imageUrl = data.image
+        ? getImageUrl(data.image)
+        : `/images/destinations/${placeName.toLowerCase().replace(/\s+/g, '')}.jpg`;
       
       // 创建 OpenStreetMap 链接
       const osmLink = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}&zoom=12`;
@@ -155,7 +154,7 @@ export default function TripSuggestionWidget() {
         name: placeName,
         country: countryName,
         description: data.description || t.beautifulDestination,
-        imageUrl: imageUrl,
+        imageUrl,
         coordinates: { lat, lon },
         tags: [seasonTag, t.travel, t.adventure],
         osmLink

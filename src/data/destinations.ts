@@ -42,6 +42,38 @@ const destinations: Destination[] = [
     image: "/images/destinations/chiangmai.jpg",
     season: "Winter"
   },
+
+  // 中国
+  {
+    name: "Shanghai, China",
+    description: "A futuristic skyline by the Huangpu River, art deco lanes, late-night snacks, and a city rhythm that never really slows down.",
+    image: "https://images.unsplash.com/photo-1522057306606-8d84fe8c0e1b?auto=format&fit=crop&w=1600&q=80",
+    season: "Fall"
+  },
+  {
+    name: "Beijing, China",
+    description: "Imperial palaces, hutongs, and the vast scale of history—plus a day trip to the Great Wall when the air feels crisp.",
+    image: "https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?auto=format&fit=crop&w=1600&q=80",
+    season: "Fall"
+  },
+  {
+    name: "Chengdu, China",
+    description: "Tea houses, spicy hotpot, panda time, and a laid-back vibe that makes you forget to rush.",
+    image: "https://images.unsplash.com/photo-1549633030-89d0743bad01?auto=format&fit=crop&w=1600&q=80",
+    season: "Spring"
+  },
+  {
+    name: "Hangzhou, China",
+    description: "West Lake at dusk, willow-lined paths, and small moments of calm—perfect for slow walks and gentle rain.",
+    image: "https://images.unsplash.com/photo-1542728928-1412e06b18b8?auto=format&fit=crop&w=1600&q=80",
+    season: "Spring"
+  },
+  {
+    name: "Xi'an, China",
+    description: "Ancient city walls, night markets, and the Terracotta Army—history you can almost touch.",
+    image: "https://images.unsplash.com/photo-1565342403917-671a2c9c1f6f?auto=format&fit=crop&w=1600&q=80",
+    season: "Spring"
+  },
   
   // 欧洲
   {
