@@ -236,7 +236,7 @@ const AvatarCarousel = () => {
 
   return (
     <div className="my-12 overflow-hidden flex flex-col items-center">
-      <h3 className="text-xl font-semibold mb-2">Different Versions</h3>
+      <h3 className="text-xl font-semibold mb-2">Different versions of me</h3>
       <p className="text-base md:text-lg text-gray-500 dark:text-gray-400 text-center mb-6">
         ← Swipe and click them! →
       </p>
