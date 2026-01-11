@@ -54,6 +54,12 @@ export default function Home() {
                 <span className="inline-flex items-center px-4 py-1.5 glass-effect rounded-full text-sm font-medium">
                   HKUST
                 </span>
+                <span className="inline-flex items-center px-4 py-1.5 glass-effect rounded-full text-sm font-medium">
+                  Shenzhen
+                </span>
+                <span className="inline-flex items-center px-4 py-1.5 glass-effect rounded-full text-sm font-medium">
+                  SLAI
+                </span>
               </div>
               
               <div className="flex flex-col gap-3 mb-10">
