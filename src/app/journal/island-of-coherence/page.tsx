@@ -9,7 +9,7 @@ import html from 'remark-html';
 
 // 增强markdown处理函数
 async function getPostData() {
-  const filePath = path.join(process.cwd(), 'journal', '2025-05-06-self-coherence.md');
+  const filePath = path.join(process.cwd(), 'journal', '2026-01-11-island-of-coherence.md');
   const fileContents = fs.readFileSync(filePath, 'utf8');
   const { data, content } = matter(fileContents);
   
@@ -25,6 +25,9 @@ async function getPostData() {
   
   contentHtml = contentHtml.replace(/<h2>(.*?)<\/h2>/g, 
     '<h2 class="text-2xl font-bold mt-10 mb-4 text-gray-800 dark:text-gray-200">$1</h2>');
+  
+  contentHtml = contentHtml.replace(/<h3>(.*?)<\/h3>/g, 
+    '<h3 class="text-xl font-bold mt-8 mb-3 text-gray-700 dark:text-gray-300">$1</h3>');
   
   // 处理引用区块 - 使其成为突出引用，替换所有匹配项
   const quoteRegex = /<blockquote>\s*<p>([\s\S]*?)<\/p>\s*<\/blockquote>/g;
@@ -161,13 +164,13 @@ async function getPostData() {
   contentHtml = contentHtml.replace(/>～/g, '>');
   
   return {
-    title: data.title || '自洽',
-    date: data.date || '2025-05-06',
+    title: data.title || '当自洽成为孤岛',
+    date: data.date || '2026-01-11',
     contentHtml
   };
 }
 
-export default async function SelfCoherence() {
+export default async function IslandOfCoherence() {
   const { title, date, contentHtml } = await getPostData();
 
   return (
@@ -238,4 +241,5 @@ export default async function SelfCoherence() {
       </div>
     </>
   );
-} 
+}
+

@@ -138,7 +138,7 @@ export default function Gallery() {
                   <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
                     <h3 className="font-medium mb-2 text-lg">Santa Taking Off & Sunset Glow on Christmas Eve in Montreux</h3>
                     <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
-                      Montreux, Switzerland. Chrismas🎄 2023.
+                      Montreux, Switzerland. Christmas🎄 2023.
                     </p>
                   </div>
                 </div>
@@ -327,7 +327,7 @@ export default function Gallery() {
                   <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
                     <h3 className="font-medium mb-2 text-lg">On the way to Montreux Christmas market</h3>
                     <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
-                      Montreux, Switzerland. Chrismas🎄 2023.
+                      Montreux, Switzerland. Christmas🎄 2023.
                     </p>
                   </div>
                 </div>
@@ -441,7 +441,7 @@ export default function Gallery() {
                   <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
                     <h3 className="font-medium mb-2 text-lg">Fushimi Inari Shrine</h3>
                     <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
-                      Kyoto, Japan. Chrismas🎄 2025.
+                      Kyoto, Japan. Christmas🎄 2025.
                     </p>
                   </div>
                 </div>
