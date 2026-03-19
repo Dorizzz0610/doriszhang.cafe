@@ -483,6 +483,25 @@ export default function Gallery() {
                     </p>
                   </div>
                 </div>
+                
+                {/* 画廊图片28 - Mar 2026 */}
+                <div className="card-modern group">
+                  <div className="relative overflow-hidden">
+                    <Image
+                      src="/images/gallery28.jpg"
+                      alt="Gallery Image 28"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 bg-white/90 dark:bg-gray-800/90 border-t border-gray-100/20 dark:border-gray-700/20 min-h-[120px] flex flex-col justify-between backdrop-blur-sm">
+                    <h3 className="font-medium mb-2 text-lg">Kennedy Town</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-light">
+                      Hong Kong SAR, China. Mar 2026.
+                    </p>
+                  </div>
+                </div>
               </div>
             </section>
             
