@@ -11,6 +11,10 @@ export default function Gallery() {
       
       <div className="min-h-screen pt-28 pb-10">
         <main className="container mx-auto px-4 sm:px-6">
+          <p className="text-center text-sm font-light text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-10 md:mb-12 leading-relaxed">
+            My mind is a gallery of everything I have ever seen
+          </p>
+
           {/* 引子图片部分 */}
           <section className="mb-20 text-center">
             <div className="relative w-full max-w-3xl mx-auto overflow-hidden rounded-2xl shadow-lg transition-all duration-500 hover:shadow-xl">

@@ -215,12 +215,12 @@ export default function CountdownWidget() {
   return (
     <div className="modern-card p-6 hover:shadow-xl transition-all duration-500">
       <h3 className="text-xl font-semibold mb-4 flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-purple-500" viewBox="0 0 20 20" fill="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-rose-500" viewBox="0 0 20 20" fill="currentColor">
           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
         </svg>
         {t.eventCountdown}
       </h3>
-      <div className={`flex flex-col items-center p-6 bg-gradient-to-br ${getGradientClass()} rounded-lg`}>
+      <div className={`flex flex-col items-center p-6 bg-gradient-to-br ${getGradientClass()} rounded-lg ring-1 ring-rose-200/60 dark:ring-rose-800/40 shadow-sm`}>
         <div className="text-5xl mb-4">
           {events[selectedEventIndex].icon}
         </div>

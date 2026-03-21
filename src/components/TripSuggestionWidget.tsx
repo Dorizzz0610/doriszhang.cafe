@@ -196,13 +196,13 @@ export default function TripSuggestionWidget() {
     return (
       <div className="modern-card p-6 hover:shadow-xl transition-all duration-500">
         <h3 className="text-xl font-semibold mb-4 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-indigo-500" viewBox="0 0 20 20" fill="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-emerald-500" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
           </svg>
           {t.tripSuggestion}
         </h3>
         <div className="flex justify-center items-center h-60">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"></div>
         </div>
       </div>
     );
@@ -212,7 +212,7 @@ export default function TripSuggestionWidget() {
     return (
       <div className="modern-card p-6 hover:shadow-xl transition-all duration-500">
         <h3 className="text-xl font-semibold mb-4 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-indigo-500" viewBox="0 0 20 20" fill="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-emerald-500" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
           </svg>
           {t.tripSuggestion}
@@ -223,7 +223,7 @@ export default function TripSuggestionWidget() {
           </p>
           <button 
             onClick={getNewDestination}
-            className="mt-2 bg-indigo-500 hover:bg-indigo-600 text-white py-1 px-3 rounded text-sm"
+            className="mt-2 bg-emerald-500 hover:bg-emerald-600 text-white py-1 px-3 rounded text-sm"
           >
             {t.tryAgain}
           </button>
@@ -237,12 +237,12 @@ export default function TripSuggestionWidget() {
   return (
     <div className="modern-card p-6 hover:shadow-xl transition-all duration-500">
       <h3 className="text-xl font-semibold mb-4 flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-indigo-500" viewBox="0 0 20 20" fill="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-emerald-500" viewBox="0 0 20 20" fill="currentColor">
           <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
         </svg>
         {t.tripSuggestion}
       </h3>
-      <div className="flex flex-col items-center p-4 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-indigo-900/30 dark:to-purple-900/30 rounded-lg">
+      <div className="flex flex-col items-center p-4 bg-gradient-to-br from-emerald-50 to-cyan-50 dark:from-emerald-900/30 dark:to-cyan-900/25 rounded-lg border border-emerald-100/60 dark:border-emerald-800/30">
         <div className="relative h-48 w-full overflow-hidden rounded-lg mb-4">
           <a href={destination.osmLink} target="_blank" rel="noopener noreferrer">
             <Image 
@@ -273,7 +273,7 @@ export default function TripSuggestionWidget() {
           </p>
           <div className="flex flex-wrap gap-1 mt-2">
             {destination.tags.map((tag, index) => (
-              <span key={index} className="bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-200 text-xs px-2 py-1 rounded">
+              <span key={index} className="bg-emerald-100 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-200 text-xs px-2 py-1 rounded">
                 {tag}
               </span>
             ))}
@@ -284,7 +284,7 @@ export default function TripSuggestionWidget() {
             href={destination.osmLink}
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-2 px-3 rounded-full text-sm font-medium flex items-center justify-center transition-colors duration-300"
+            className="flex-1 bg-cyan-600 hover:bg-cyan-700 text-white py-2 px-3 rounded-full text-sm font-medium flex items-center justify-center transition-colors duration-300"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
@@ -293,7 +293,7 @@ export default function TripSuggestionWidget() {
           </a>
           <button 
             onClick={getNewDestination}
-            className="flex-1 bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-3 rounded-full text-sm font-medium flex items-center justify-center transition-colors duration-300"
+            className="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-3 rounded-full text-sm font-medium flex items-center justify-center transition-colors duration-300"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" />

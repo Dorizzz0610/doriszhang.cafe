@@ -166,14 +166,14 @@ export default function SpaceExplorationWidget() {
     return (
       <div className="modern-card p-6 hover:shadow-xl transition-all duration-500">
         <h3 className="text-xl font-semibold mb-4 flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-purple-500" viewBox="0 0 20 20" fill="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-sky-500" viewBox="0 0 20 20" fill="currentColor">
             <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
             <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
           </svg>
           {t.spaceExploration}
         </h3>
         <div className="flex justify-center items-center h-60">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-sky-500"></div>
         </div>
       </div>
     );
@@ -184,13 +184,13 @@ export default function SpaceExplorationWidget() {
   return (
     <div className="modern-card p-6 hover:shadow-xl transition-all duration-500">
       <h3 className="text-xl font-semibold mb-4 flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-purple-500" viewBox="0 0 20 20" fill="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-sky-500" viewBox="0 0 20 20" fill="currentColor">
           <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
           <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
         </svg>
         {t.spaceExploration}
       </h3>
-      <div className="flex flex-col space-y-4">
+      <div className="flex flex-col space-y-4 rounded-xl bg-gradient-to-br from-sky-50 to-blue-50 dark:from-sky-950/30 dark:to-blue-950/25 p-4 border border-sky-100/70 dark:border-sky-800/35">
         <div className="relative h-48 w-full overflow-hidden rounded-lg">
           {!imageError ? (
             <Image 
@@ -225,7 +225,7 @@ export default function SpaceExplorationWidget() {
         </div>
         
         {(error || imageError) && (
-          <p className="text-amber-500 text-xs mt-4 text-center">
+          <p className="text-sky-600 dark:text-sky-400 text-xs mt-4 text-center">
             {t.note} {t.apiConnectionProblem}
           </p>
         )}

@@ -2,6 +2,11 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import {
+  formatHongKongLongDate,
+  getHongKongDayOfWeek,
+  getHongKongWeekdayName,
+} from '../lib/hongKongTime';
 
 // 现代颜色调色板 - 与背景动画组件使用相同的颜色
 const modernColors = [
@@ -25,16 +30,15 @@ const NavBar = () => {
   });
 
   useEffect(() => {
-    // Get current date info
+    // Hong Kong calendar (sync with Film / Philosophy of the day widgets)
     const now = new Date();
-    const dayOfWeek = now.getDay(); // 0-6, 0 is Sunday
-    const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const options: Intl.DateTimeFormatOptions = { month: 'long', day: 'numeric', year: 'numeric' };
-    const dateStr = now.toLocaleDateString('en-US', options);
-    
+    const dayOfWeek = getHongKongDayOfWeek(now);
+    const dateStr = formatHongKongLongDate(now);
+    const weekdayName = getHongKongWeekdayName(now);
+
     setToday({
       date: dateStr,
-      day: dayNames[dayOfWeek],
+      day: weekdayName,
       colorName: modernColors[dayOfWeek].name,
       bgColorHex: modernColors[dayOfWeek].bg,
       textColorHex: modernColors[dayOfWeek].text

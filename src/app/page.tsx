@@ -6,6 +6,8 @@ import AvatarCarousel from "../components/AvatarCarousel";
 import SpaceExplorationWidget from "../components/SpaceExplorationWidget";
 import TripSuggestionWidget from "../components/TripSuggestionWidget";
 import CountdownWidget from "../components/CountdownWidget";
+import FilmOfTheDayWidget from "../components/FilmOfTheDayWidget";
+import PhilosophyOfTheDayWidget from "../components/PhilosophyOfTheDayWidget";
 import WeChatButton from "../components/WeChatButton";
 
 export default function Home() {
@@ -334,6 +336,11 @@ export default function Home() {
           {/* Fun Widgets */}
           <section className="mb-20 animate-fadeIn" style={{ animationDelay: "1.4s" }}>
             <h2 className="text-2xl font-bold mb-8 gradient-text inline-block">Fun Widgets</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <FilmOfTheDayWidget />
+              <PhilosophyOfTheDayWidget />
+            </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {/* 太空探索 */}
